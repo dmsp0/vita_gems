@@ -16,6 +16,7 @@ public class EmployeeDAO {
 	private ResultSet rs;
 	
 	private String getAllEmployeeSQL = "select * from hrinformation";
+	private String registEmployeeSQL = "insert into HRInformation(employeeName,birthday,phoneNum,department,employeeRank,joinDate,gender,authority) values(?,?,?,?,?,?,?,?)";
 	
 	public List<EmployeeDTO> getAllEmployee() {
 		
@@ -43,6 +44,20 @@ public class EmployeeDAO {
 		}
 		
 		return arreDTO;// 모든 사원 정보를 담은 리스트를 반환합니다.
+	}
+	
+	public void registEmployee() {
+		con=MyDBConnection.getConnection();
+		try {
+			pstmt = con.prepareStatement(registEmployeeSQL);
+			pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			MyDBConnection.close(rs, pstmt, con);
+		}
+		
 	}
 	
 		 

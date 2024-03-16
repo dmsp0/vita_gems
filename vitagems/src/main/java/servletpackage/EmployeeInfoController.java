@@ -42,8 +42,12 @@ public class EmployeeInfoController extends HttpServlet {
     				
     			}else if(PATH.equals("/employeeSearchView.select")) { // 개별사원조회
     				System.out.println("라라");
-    			}else {
-    				System.out.println("이거뭔데");
+    			}else if(PATH.equals("/employeeRegisterView.employeeDo")){//사원등록
+    				EmployeeDAO eDAO = new EmployeeDAO();
+    				eDAO.registEmployee();
+    				RequestDispatcher dispatcher = request.getRequestDispatcher("employeeSearchView.employeeDo");
+        		    dispatcher.forward(request, response);
+    				
     			}
     	
     }

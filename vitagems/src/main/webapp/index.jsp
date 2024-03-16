@@ -20,7 +20,7 @@
         <img style="width: 400px" src="img/vitagems_logo.png" />
         <p id="companyName">choongang company</p>
       </h1>
-      <!--프로그램명 선정시 수정할 부분 -->
+     
 
       <form action="loginComplete" method="post">
         <div class="log-area">

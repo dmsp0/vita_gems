@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>HRproject</title>
+    <title>VitaGems</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -63,6 +63,7 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <!--  <h6 class="collapse-header">Custom Components:</h6>-->
+                        <a class="collapse-item" href="employeeRegisterView.jsp">사원등록</a>
                         <a class="collapse-item" href="employeeSearchView.employeeDo">사원관리</a>
                         <a class="collapse-item" href="workSearchView.jsp">근태관리</a>
                     </div>
