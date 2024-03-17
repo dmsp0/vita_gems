@@ -34,7 +34,19 @@ public class WorkController extends HttpServlet {
 			request.setAttribute("wDTOlist", wDTOlist);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("workSearchView.jsp");
 			dispatcher.forward(request, response);
+		} 
+		
+		else if(PATH.equals("/workDetailSearchView.workDo")) {
+			String employeeCode = request.getParameter("employeeCode");
+			WorkDAO wDAO = new WorkDAO();
+			List<WorkDTO> wdDTOlist = wDAO.getDetailAttendance(employeeCode);
+			
+			request.setAttribute("wdDTOlist", wdDTOlist);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("workDetailSearchView.jsp");
+			dispatcher.forward(request, response);
 		}
+		
+		
 		
 		/*
 		 * String view =""; String action = request.getParameter("action");

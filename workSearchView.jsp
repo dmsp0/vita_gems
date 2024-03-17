@@ -90,7 +90,8 @@
                                     <tbody>
            <c:forEach var="work" items= "${wDTOlist}">
             <tr>
-                <td><a href="workDetailSearchView.jsp">${work.employeeCode}</a></td>
+            <!-- 해당 사원의 사원코드를 파라미터 값으로 가지고 넘어가기 -->
+                <td><a href="workDetailSearchView.workDo?employeeCode=${work.employeeCode}">${work.employeeCode}</a></td>
                 <td>${work.employeeName}</td>
                 <td>${work.totalWorkCount}</td>
                 <td>${work.vacation}</td>
