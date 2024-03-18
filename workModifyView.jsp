@@ -119,9 +119,9 @@
 									</table>
 								</div>
 							</div>
-							<!-- 근태 상태수정으로 넘어가기 -->
+							<!-- 해당 사원의 상세 상태 정보창으로 넘어가기 -->
 							<a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" href="workDetailSearchView.workDo?employeeCode=${modifyCode}">수정 완료</a>
-							<!-- 근태 상태수정으로 넘어가기 -->
+							<!-- 해당 사원의 상세 상태 정보창으로 넘어가기 -->
 							<a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" href="workDetailSearchView.workDo?employeeCode=${modifyCode}">수정 취소</a>
 							
 						</div>
@@ -251,17 +251,6 @@
 					<!-- 원형 그래프 end -->
 				</div>
 				
-
-
-
-
-
-
-
-
-
-
-
 
 			</div>
 			<!-- /.container-fluid -->
