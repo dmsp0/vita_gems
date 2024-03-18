@@ -40,10 +40,29 @@ public class WorkController extends HttpServlet {
 			String employeeCode = request.getParameter("employeeCode");
 			WorkDAO wDAO = new WorkDAO();
 			List<WorkDTO> wdDTOlist = wDAO.getDetailAttendance(employeeCode);
+			List<WorkDTO> wdtDTOlist = wDAO.getAlldateofAttendance(employeeCode);
 			
+			request.setAttribute("modifyCode", employeeCode); // 수정하기 위해 가져갈 사원코드
 			request.setAttribute("wdDTOlist", wdDTOlist);
+			request.setAttribute("wdtDTOlist", wdtDTOlist);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("workDetailSearchView.jsp");
 			dispatcher.forward(request, response);
+			
+		} 
+		
+		else if(PATH.equals("/workModifyView.workDo")) {
+			String employeeCode = request.getParameter("employeeCode");
+			WorkDAO wDAO = new WorkDAO();
+			List<WorkDTO> wdDTOlist = wDAO.getDetailAttendance(employeeCode);
+			List<WorkDTO> wdtDTOlist = wDAO.getAlldateofAttendance(employeeCode);
+			
+			request.setAttribute("modifyCode", employeeCode); // 수정하기 위해 가져갈 사원코드
+			request.setAttribute("wdDTOlist", wdDTOlist);
+			request.setAttribute("wdtDTOlist", wdtDTOlist);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("workModifyView.jsp");
+			dispatcher.forward(request, response);
+			
+			
 		}
 		
 		

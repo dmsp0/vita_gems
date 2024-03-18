@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>HRproject</title>
+    <title>workSearchView</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -49,8 +49,8 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">근태조회</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                        <i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
                     </div>
 								<!--  사원들의 정보가 들어갈 곳 -->
                  
@@ -76,17 +76,7 @@
                                             <th>결근</th>
                                         </tr>
                                     </thead>
-<!--                                     <tfoot>
-                                        <tr>
-                                            <th>사원코드</th>
-                                            <th>사원명</th>
-                                            <th>근무</th>
-                                            <th>휴가</th>
-                                            <th>지각</th>
-                                            <th>조퇴</th>
-                                            <th>결근</th>
-                                        </tr>
-                                    </tfoot> -->
+
                                     <tbody>
            <c:forEach var="work" items= "${wDTOlist}">
             <tr>

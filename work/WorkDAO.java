@@ -14,8 +14,12 @@ public class WorkDAO {
 	private PreparedStatement pstmt = null ;
 	private ResultSet rs = null;
 	
+	// 전사원 근태 정보 가져오기
 	private String searchAttendanceSQL = "select employeeCode, employeeName, totalWorkCount, vacation, lateness, earlyLeave, absence from totalattendance";  
+	// 해당 사원 근태 상세 정보 가져오기
 	private String searchDetailAttendanceSQL = "select * from totalattendance where employeeCode = ?";
+	// 해당 사원 날짜별 데이터 가져오기
+	private String totalDateofAttendanceSQL = "select date, startTimeForWork, endTimeForWork, status from attendance where employeeCode = ?";
 	
 	// 전사원 근태 내역
 	public List<WorkDTO> getAllAttendance(){
@@ -53,21 +57,21 @@ public class WorkDAO {
 			pstmt = con.prepareStatement(searchDetailAttendanceSQL);
 			pstmt.setString(1, employeeCode); // employeeCode를 설정
 			rs = pstmt.executeQuery();
-			while(rs.next()) {
+			if(rs.next()) {
 				WorkDTO wdDAO = new WorkDTO();
 				
-				wdDAO.setEmployeeCode(rs.getString(1)); //사원코드
-				wdDAO.setEmployeeName(rs.getString(2)); //사원명
-				wdDAO.setTotalWorkCount(rs.getInt(3)); //총 근무일수
-				wdDAO.setAttendanceCount(rs.getInt(4)); // 출근
-				wdDAO.setBusinesstripCount(rs.getInt(5)); // 출장
-				wdDAO.setOutsideWorkCount(rs.getInt(6)); //외근
-				wdDAO.setVacation(rs.getDouble(7)); //총 휴가
-				wdDAO.setMonthlyLeave(rs.getInt(8));// 월차 
-				wdDAO.setHalfDayLeave(rs.getInt(9)); //반차
-				wdDAO.setLateness(rs.getInt(10)); //지각 
-				wdDAO.setEarlyLeave(rs.getInt(11)); //조퇴
-				wdDAO.setAbsence(rs.getInt(12)); //결근 
+				wdDAO.setEmployeeCode(rs.getString("employeeCode")); //사원코드
+				wdDAO.setEmployeeName(rs.getString("employeeName")); //사원명
+				wdDAO.setTotalWorkCount(rs.getInt("totalWorkCount")); //총 근무일수
+				wdDAO.setAttendanceCount(rs.getInt("attendanceCount")); // 출근
+				wdDAO.setBusinesstripCount(rs.getInt("businesstripCount")); // 출장
+				wdDAO.setOutsideWorkCount(rs.getInt("outsideWorkCount")); //외근
+				wdDAO.setVacation(rs.getDouble("vacation")); //총 휴가
+				wdDAO.setMonthlyLeave(rs.getInt("monthlyLeave"));// 월차 
+				wdDAO.setHalfDayLeave(rs.getInt("halfDayLeave")); //반차
+				wdDAO.setLateness(rs.getInt("lateness")); //지각 
+				wdDAO.setEarlyLeave(rs.getInt("earlyLeave")); //조퇴
+				wdDAO.setAbsence(rs.getInt("absence")); //결근 
 				oneWorkInfo.add(wdDAO);
 			}
 		}catch (SQLException e) {
@@ -78,6 +82,32 @@ public class WorkDAO {
 		
 		return oneWorkInfo;// 전사원 근태정보를 담은 리스트를 반환합니다.
 	}
+	
+	// 전사원 근태 내역
+		public List<WorkDTO> getAlldateofAttendance(String employeeCode){
+			ArrayList<WorkDTO> workAllDateInfo = new ArrayList<>();
+			con = MyDBConnection.getConnection();
+			try {
+				pstmt = con.prepareStatement(totalDateofAttendanceSQL);
+				pstmt.setString(1, employeeCode); // employeeCode를 설정
+				rs = pstmt.executeQuery();
+				while(rs.next()) {
+					WorkDTO wdtDAO = new WorkDTO();
+					wdtDAO.setEmployeeCode(employeeCode); // 해당 사원코드
+					wdtDAO.setDate(rs.getDate("date")); //날짜
+					wdtDAO.setStartTimeForWork(rs.getTime("startTimeForWork")); //출근시간
+					wdtDAO.setEndTimeForWork(rs.getTime("endTimeForWork")); //퇴근시간
+					wdtDAO.setStatus(rs.getString("status")); //근태 상태
+					workAllDateInfo.add(wdtDAO);
+				}
+			}catch (SQLException e) {
+				e.printStackTrace();
+			}finally {
+				MyDBConnection.close(rs, pstmt, con);
+			}
+			
+			return workAllDateInfo;// 해당 사원의 날짜별 근태정보를 담은 리스트를 반환합니다.
+		}
 	
 	/*
 	 * // 해당 사원의 상세 근태 내역 public List<WorkDTO> getDetailAttendance(){ List<WorkDTO>

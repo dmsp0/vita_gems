@@ -19,9 +19,13 @@ private int lateness; //지각
 private int earlyLeave; //조퇴
 private int absence; //결근
 	// TABLE attendance
-private Date date;
-private Time departureTime;
-private String status;
+private Date date; // 날짜
+private Time startTimeForWork; // 출근시간
+private Time endTimeForWork; // 퇴근시간
+private String status; // 근태 상태
+
+
+
 public String getEmployeeCode() {
 	return employeeCode;
 }
@@ -100,11 +104,18 @@ public Date getDate() {
 public void setDate(Date date) {
 	this.date = date;
 }
-public Time getDepartureTime() {
-	return departureTime;
+
+public Time getStartTimeForWork() {
+	return startTimeForWork;
 }
-public void setDepartureTime(Time departureTime) {
-	this.departureTime = departureTime;
+public void setStartTimeForWork(Time startTimeForWork) {
+	this.startTimeForWork = startTimeForWork;
+}
+public Time getEndTimeForWork() {
+	return endTimeForWork;
+}
+public void setEndTimeForWork(Time endTimeForWork) {
+	this.endTimeForWork = endTimeForWork;
 }
 public String getStatus() {
 	return status;
