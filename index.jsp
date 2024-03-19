@@ -17,7 +17,7 @@
   <body>
     <section class="login-form">
       <h1>
-        <img style="width: 400px" src="img/vitagems_logo.png" />
+        <img style="width: 300px" src="img/vitagems_logo.png" />
         <p id="companyName">choongang company</p>
       </h1>
      

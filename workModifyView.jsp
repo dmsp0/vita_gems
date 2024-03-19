@@ -28,6 +28,36 @@
 
 </head>
 
+<script>
+function optionSelected(selectElement) {
+	
+	//var changeStatusArray = 
+	
+	// "nowStatusDate${counter}"
+	var nowStatusDateId = selectElement.parentElement.previousElementSibling.id;
+	var nowStatusDateElement = document.getElementById(nowStatusDateId);
+	var nowStatusDateText = nowStatusDateElement.textContent;
+		
+    var selectedValue = selectElement.value;
+    var dot = selectElement.nextElementSibling;
+    
+    var nowStatusId = selectElement.parentElement.previousElementSibling.id;
+    var nowStatusElement = document.getElementById(nowStatusId);
+    var nowStatusText = nowStatusElement.textContent.trim();
+
+    if (selectedValue !== nowStatusText) {
+        dot.style.color = "red";
+        
+    }
+    else {
+        dot.style.color = "";
+    }
+}
+</script>
+
+
+
+
 <body id="page-top">
 
 	<!-- Page Wrapper -->
@@ -39,11 +69,11 @@
 
 		<!-- Content Wrapper -->
 		<div id="content-wrapper" class="d-flex flex-column">
-<%@ include file="header.jsp"%>
+			<%@ include file="header.jsp"%>
 			<!-- Main Content -->
 			<div id="content">
 
-				
+
 
 				<!-- Begin Page Content -->
 				<div class="container-fluid">
@@ -82,188 +112,213 @@
 												<th>출근시간</th>
 												<th>퇴근시간</th>
 												<th>상태</th>
+												<th>수정</th>
 											</tr>
 										</thead>
 
 										<tbody>
+											<c:set var="counter" value="1" />
 											<c:forEach var="work1" items="${wdtDTOlist}">
 												<tr>
 													<!-- 해당 사원의 사원코드를 파라미터 값으로 가지고 넘어가기 -->
-													<td>${work1.date}</td>
+													<td id="nowStatusDate${counter}">${work1.date}</td>
 													<!-- 날짜 -->
 													<td>${work1.startTimeForWork}</td>
 													<!-- 출근 -->
 													<td>${work1.endTimeForWork}</td>
 													<!-- 퇴근 -->
-													<td><select name="workStatus" id="workStatus">
-														<optgroup label="근태 상태">
-															<option value="현재상태">${work1.status}</option>
-															<hr>
-															<option value="출근">출근</option>
-															<option value="출장">출장</option>
-															<option value="외근">외근</option>
-															<option value="월차">월차</option>
-															<option value="반차">반차</option>
-															<option value="조퇴">조퇴</option>
-															<option value="지각">지각</option>
-															<option value="결근">결근</option>
-															<option value=""></option>
-														</optgroup>
-														</select>
-														
-													</td>
-													<!-- 상태 -->
+													<td id="nowStatus${counter}">${work1.status}</td>
+													<!-- 현재 상태 -->
+													<td><select name="changeStatus${counter}"
+														id="changeStatus${counter}"
+														onchange="optionSelected(this)">
+															<optgroup label="상태 수정">
+																
+																<option value=""></option>
+																<option value="출근">출근</option>
+																<option value="출장">출장</option>
+																<option value="외근">외근</option>
+																<option value="월차">월차</option>
+																<option value="반차">반차</option>
+																<option value="조퇴">조퇴</option>
+																<option value="지각">지각</option>
+																<option value="결근">결근</option>
+															</optgroup>
+													</select> <span class="dot">●</span></td>
 												</tr>
+												<c:set var="counter" value="${counter + 1}" />
 											</c:forEach>
 										</tbody>
 									</table>
 								</div>
 							</div>
-							<!-- 해당 사원의 상세 상태 정보창으로 넘어가기 -->
-							<a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" href="workDetailSearchView.workDo?employeeCode=${modifyCode}">수정 완료</a>
-							<!-- 해당 사원의 상세 상태 정보창으로 넘어가기 -->
-							<a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" href="workDetailSearchView.workDo?employeeCode=${modifyCode}">수정 취소</a>
-							
+							<!-- 근태 상태 정보창으로 넘어가기 -->
+							<a
+								class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+								href="workDetailSearchView.workDo?employeeCode=${modifyCode}">수정
+								완료</a>
+
+							<!-- 근태 상태 정보창으로 넘어가기 -->
+							<a
+								class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+								href="workDetailSearchView.workDo?employeeCode=${modifyCode}">수정
+								취소</a>
+
 						</div>
 						<!-- 날짜별 개인 상세 근태 기록 끝 -->
 
-					
-					<!-- 왼쪽 -->
-	
-					<!-- Content Column -->
-					<div class="col-lg-6 mb-4">
-					<!-- 근태 전체 상세 정보 테이블 -->
-				<div class="table-responsive mb-4">
-					<table class="table table-bordered" id="dataTable" width="100%"
-						cellspacing="0">
-						<thead>
-							<tr>
-								<th>사원코드</th>
-								<th>사원명</th>
-								<th>근무</th>
-								<th>출근</th>
-								<th>출장</th>
-								<th>외근</th>
-								<th>휴가</th>
-								<th>월차</th>
-								<th>반차</th>
-								<th>지각</th>
-								<th>조퇴</th>
-								<th>결근</th>
-							</tr>
-						</thead>
-						<tbody>
-							<c:forEach var="work" items="${wdDTOlist}">
-								<tr>
-									<!-- 해당 사원의 사원코드를 파라미터 값으로 가지고 넘어가기 -->
-									<td>${work.employeeCode}</td>
-									<!-- 사원코드 -->
-									<td>${work.employeeName}</td>
-									<!-- 사원명 -->
-									<td>${work.totalWorkCount}</td>
-									<!-- 총 근무 -->
-									<td>${work.attendanceCount}</td>
-									<!-- 출근 -->
-									<td>${work.businesstripCount}</td>
-									<!-- 출장 -->
-									<td>${work.outsideWorkCount}</td>
-									<!-- 외근 -->
-									<td>${work.vacation}</td>
-									<!-- 휴가 -->
-									<td>${work.monthlyLeave}</td>
-									<!-- 월차 -->
-									<td>${work.halfDayLeave}</td>
-									<!-- 반차 -->
-									<td>${work.lateness}</td>
-									<!-- 지각 -->
-									<td>${work.earlyLeave}</td>
-									<!-- 조퇴 -->
-									<td>${work.absence}</td>
-									<!-- 결근 -->
-									<!-- 추가적인 사원 정보 표현 -->
-								</tr>
-							</c:forEach>
-						</tbody>
-					</table>
-				</div>
-				<!-- 근태 전체 상태 정보 끝 -->
-						<!-- 사원정보로 넘어가기 -->
-						<div class="card shadow mb-4">
-							<div class="card-header py-3">
-								<h6 class="m-0 font-weight-bold text-primary">사원 정보</h6>
+
+
+
+
+
+						<!-- 왼쪽 -->
+
+						<!-- Content Column -->
+						<div class="col-lg-6 mb-4">
+							<!-- 근태 전체 상세 정보 테이블 -->
+							<div class="table-responsive mb-4">
+								<table class="table table-bordered" id="dataTable" width="100%"
+									cellspacing="0">
+									<thead>
+										<tr>
+											<th>사원코드</th>
+											<th>사원명</th>
+											<th>근무</th>
+											<th>출근</th>
+											<th>출장</th>
+											<th>외근</th>
+											<th>휴가</th>
+											<th>월차</th>
+											<th>반차</th>
+											<th>지각</th>
+											<th>조퇴</th>
+											<th>결근</th>
+										</tr>
+									</thead>
+									<tbody>
+										<c:forEach var="work" items="${wdDTOlist}">
+											<tr>
+												<!-- 해당 사원의 사원코드를 파라미터 값으로 가지고 넘어가기 -->
+												<td>${work.employeeCode}</td>
+												<!-- 사원코드 -->
+												<td>${work.employeeName}</td>
+												<!-- 사원명 -->
+												<td>${work.totalWorkCount}</td>
+												<!-- 총 근무 -->
+												<td>${work.attendanceCount}</td>
+												<!-- 출근 -->
+												<td>${work.businesstripCount}</td>
+												<!-- 출장 -->
+												<td>${work.outsideWorkCount}</td>
+												<!-- 외근 -->
+												<td>${work.vacation}</td>
+												<!-- 휴가 -->
+												<td>${work.monthlyLeave}</td>
+												<!-- 월차 -->
+												<td>${work.halfDayLeave}</td>
+												<!-- 반차 -->
+												<td>${work.lateness}</td>
+												<!-- 지각 -->
+												<td>${work.earlyLeave}</td>
+												<!-- 조퇴 -->
+												<td>${work.absence}</td>
+												<!-- 결근 -->
+												<!-- 추가적인 사원 정보 표현 -->
+											</tr>
+										</c:forEach>
+									</tbody>
+								</table>
 							</div>
-							<div class="card-body">
-								<div class="text-center">
-									<!-- <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
-                                            src="img/undraw_posting_photo.svg" alt="..."> -->
-									<!-- 사원 정보 간략 기술하기 -->
-								</div>
-
-								<a target="_blank" rel="nofollow" href="#">사원정보 보러가기 &rarr;</a>
-							</div>
-						</div>
-						<!-- 사원정보로 넘어가기 끝 -->
-
-
-						<!-- 원형 그래프 start-->
-						<div class=" mb-4">
+							<!-- 근태 전체 상태 정보 끝 -->
+							<!-- 사원정보로 넘어가기 -->
 							<div class="card shadow mb-4">
-								<!-- Card Header - Dropdown -->
-								<div
-									class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-									<h6 class="m-0 font-weight-bold text-primary">근태 상태 통계</h6>
-									<div class="dropdown no-arrow">
-										<a class="dropdown-toggle" href="#" role="button"
-											id="dropdownMenuLink" data-toggle="dropdown"
-											aria-haspopup="true" aria-expanded="false"> <i
-											class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-										</a>
-										<div
-											class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-											aria-labelledby="dropdownMenuLink">
-											<div class="dropdown-header">Dropdown Header:</div>
-											<a class="dropdown-item" href="#">Action</a> <a
-												class="dropdown-item" href="#">Another action</a>
-											<div class="dropdown-divider"></div>
-											<a class="dropdown-item" href="#">Something else here</a>
+								<div class="card-header py-3">
+									<h6 class="m-0 font-weight-bold text-primary">사원 정보</h6>
+								</div>
+								<div class="card-body">
+									<div class="text-center">
+										<!-- <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
+                                            src="img/undraw_posting_photo.svg" alt="..."> -->
+										<!-- 사원 정보 간략 기술하기 -->
+									</div>
+
+									<a target="_blank" rel="nofollow" href="#">사원정보 보러가기 &rarr;</a>
+								</div>
+							</div>
+							<!-- 사원정보로 넘어가기 끝 -->
+
+
+							<!-- 원형 그래프 start-->
+							<div class=" mb-4">
+								<div class="card shadow mb-4">
+									<!-- Card Header - Dropdown -->
+									<div
+										class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+										<h6 class="m-0 font-weight-bold text-primary">근태 상태 통계</h6>
+										<div class="dropdown no-arrow">
+											<a class="dropdown-toggle" href="#" role="button"
+												id="dropdownMenuLink" data-toggle="dropdown"
+												aria-haspopup="true" aria-expanded="false"> <i
+												class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+											</a>
+											<div
+												class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+												aria-labelledby="dropdownMenuLink">
+												<div class="dropdown-header">Dropdown Header:</div>
+												<a class="dropdown-item" href="#">Action</a> <a
+													class="dropdown-item" href="#">Another action</a>
+												<div class="dropdown-divider"></div>
+												<a class="dropdown-item" href="#">Something else here</a>
+											</div>
+										</div>
+									</div>
+									<!-- Card Body -->
+									<div class="card-body">
+										<div class="chart-pie pt-4 pb-2">
+											<canvas id="myPieChart"></canvas>
+										</div>
+										<div class="mt-4 text-center small">
+											<span class="mr-2"> <i
+												class="fas fa-circle text-primary"></i> 근무
+											</span> <span class="mr-2"> <i
+												class="fas fa-circle text-success"></i> 휴가
+											</span> <span class="mr-2"> <i
+												class="fas fa-circle text-info"></i> 결근
+											</span>
 										</div>
 									</div>
 								</div>
-								<!-- Card Body -->
-								<div class="card-body">
-									<div class="chart-pie pt-4 pb-2">
-										<canvas id="myPieChart"></canvas>
-									</div>
-									<div class="mt-4 text-center small">
-										<span class="mr-2"> <i
-											class="fas fa-circle text-primary"></i> 근무
-										</span> <span class="mr-2"> <i
-											class="fas fa-circle text-success"></i> 휴가
-										</span> <span class="mr-2"> <i class="fas fa-circle text-info"></i>
-											결근
-										</span>
-									</div>
-								</div>
 							</div>
-						</div>
 
+						</div>
+						<!-- 원형 그래프 end -->
 					</div>
-					<!-- 원형 그래프 end -->
+
+
+
+
+
+
+
+
+
+
+
+
+
 				</div>
-				
+				<!-- /.container-fluid -->
 
 			</div>
-			<!-- /.container-fluid -->
+			<!-- End of Main Content -->
+
+			<!-- Footer -->
+			<%@ include file="footer.jsp"%>
+			<!-- End of Footer -->
 
 		</div>
-		<!-- End of Main Content -->
-
-		<!-- Footer -->
-		<%@ include file="footer.jsp"%>
-		<!-- End of Footer -->
-
-	</div>
-	<!-- End of Content Wrapper -->
+		<!-- End of Content Wrapper -->
 
 	</div>
 	<!-- End of Page Wrapper -->
