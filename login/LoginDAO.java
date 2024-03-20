@@ -16,6 +16,8 @@ public class LoginDAO {
 	
 	//private String getidpwd = "select employeeCode,password from hrinformation where employeeCode=?"; 2023DV001// 입력한 아이디의 비밀번호가 맞는지
 	private String getidpwd = "select employeeCode,employeepassword from hrinformation where employeeCode=?";
+	private String getUserName = "select employeeName from hrinformation where employeeCode=?";
+	
 	public boolean doLogin(LoginDTO loginDto) {
 		LoginDTO ld = null;
 		try {
@@ -45,5 +47,22 @@ public class LoginDAO {
 		
 	}
 	
+	public String getUserName(String id) {
+		String userName = null;
+		con = MyDBConnection.getConnection();
+		try {
+			pstmt = con.prepareStatement(getUserName);
+			pstmt.setString(1, id);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				userName = rs.getString(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			MyDBConnection.close(rs, pstmt, con);
+		}
+		return userName;
+	}
 	
 }

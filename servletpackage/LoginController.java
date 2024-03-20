@@ -36,6 +36,10 @@ public class LoginController extends HttpServlet {
 	    	 HttpSession session = request.getSession(); 
 	    	 session.setAttribute("user", id);
 	    	 System.out.println("세션에 user라는 이름으로 입력한 id저장");
+	    	 
+	    	 session.setAttribute("userName",getUserName(id));
+	    	 System.out.println("세션에 userName라는 이름으로 employeeName저장");
+	    	 
 	    	 request.setAttribute("id", id);
 	    	 System.out.println("request에 user라는 이름으로 입력한 id저장");
 	    	// 위의 두 줄이 세션 생성 및 사용자 정보 저장
@@ -57,5 +61,12 @@ public class LoginController extends HttpServlet {
 		
 		return loginDao.doLogin(loginDto);
 	}
-
+	
+	private String getUserName(String id) {
+		String userName = null;
+		LoginDAO loginDao = new LoginDAO();
+		userName = loginDao.getUserName(id);
+		return userName;
+	}
+	
 }
