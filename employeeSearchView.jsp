@@ -41,7 +41,9 @@
             <!-- Main Content -->
             <div id="content">
 
-              <%@ include file="header.jsp" %>
+                <!-- Topbar -->
+                <%@ include file="header.jsp" %>
+                <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
@@ -73,6 +75,7 @@
                                             <th>부서</th>
                                             <th>직급</th>
                                             <th>입사일</th>
+                                            <th>사원코드</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -83,17 +86,19 @@
                                             <th>부서</th>
                                             <th>직급</th>
                                             <th>입사일</th>
+                                            <th>사원코드</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
            <c:forEach var="employee" items="${eDTOList}">
             <tr>
-                <td><a href="employeeModifyView.jsp">${employee.employeeName}</a></td>
+                <td>${employee.employeeName}</td>
                 <td>${employee.birthday}</td>
                 <td>${employee.phonenum}</td>
                 <td>${employee.department}</td>
                 <td>${employee.employeeRank}</td>
                 <td>${employee.joinDate}</td>
+                <td><a href="employeeModifyView.employeeDo?employeeCode=${employee.employeeCode}">${employee.employeeCode}</a></td>
                 <!-- 추가적인 사원 정보 표현 -->
             </tr>
         </c:forEach>

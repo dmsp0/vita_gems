@@ -42,7 +42,9 @@
             <!-- Main Content -->
             <div id="content">
 
-               <%@ include file="header.jsp" %>
+                <!-- Topbar -->
+                <%@ include file="header.jsp" %>
+                <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
@@ -71,11 +73,11 @@
     <div>성별</div>
     <div class="mb-3 mt-3">
       <div class="form-check">
-        <input type="radio" class="form-check-input" id="radio1" name="optradio" value="option1">
+        <input type="radio" class="form-check-input" id="radio1" name="gender" value="남">
         <label class="form-check-label" for="radio1">남</label>
       </div>
       <div class="form-check">
-        <input type="radio" class="form-check-input" id="radio2" name="optradio" value="option2">
+        <input type="radio" class="form-check-input" id="radio2" name="gender" value="여">
         <label class="form-check-label" for="radio2">여</label>
       </div>
     </div>
@@ -92,29 +94,31 @@
 </div>
 
 
-
+ 
 <div class="row">
   		<div class="col-12 col-md-6">
   		<div class="mb-3 mt-3">
    <div class="dropdown">
-  <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
+   <input type="hidden" id="department" name="department" value="">
+  <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" id="departmentButton">
     부서를 선택하세요
   </button>
   <ul class="dropdown-menu">
-    <li><a class="dropdown-item" >개발부</a></li>
-    <li><a class="dropdown-item" >어쩌고</a></li>
-    <li><a class="dropdown-item" >저쩌고</a></li>
+      <li><a class="dropdown-item" onclick="selectDepartment('DV',this)">개발부</a></li>
+      <li><a class="dropdown-item" onclick="selectDepartment('MN',this)">인사과</a></li>
+      <li><a class="dropdown-item" onclick="selectDepartment('MK',this)">마케팅</a></li>
   </ul>
-  <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
+  <input type="hidden" id="employeeRank" name="employeeRank" value="">
+  <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" id="employeeRankButton">
     직급을 선택하세요
   </button>
   <ul class="dropdown-menu">
-    <li><a class="dropdown-item" >과장</a></li>
-    <li><a class="dropdown-item" >부장</a></li>
-    <li><a class="dropdown-item" >간장</a></li>
-    <li><a class="dropdown-item" >공장</a></li>
-    <li><a class="dropdown-item" >간장</a></li>
-  </ul>
+  <li><a class="dropdown-item" onclick="selectEmployeeRank('부장')">부장</a></li>
+  <li><a class="dropdown-item" onclick="selectEmployeeRank('차장')">차장</a></li>
+  <li><a class="dropdown-item" onclick="selectEmployeeRank('과장')">과장</a></li>
+  <li><a class="dropdown-item" onclick="selectEmployeeRank('대리')">대리</a></li>
+  <li><a class="dropdown-item" onclick="selectEmployeeRank('사원')">사원</a></li>
+</ul>
 </div>
   </div>
   </div>
@@ -134,11 +138,11 @@
     <div>관리자권한여부</div>
     <div class="mb-3 mt-3">
       <div class="form-check">
-        <input type="radio" class="form-check-input" id="radio1" name="optradio" value="option1">
+        <input type="radio" class="form-check-input" id="radio1" name="authority" value="user">
         <label class="form-check-label" for="radio1">사원</label>
       </div>
       <div class="form-check">
-        <input type="radio" class="form-check-input" id="radio2" name="optradio" value="option2">
+        <input type="radio" class="form-check-input" id="radio2" name="authority" value="admin">
         <label class="form-check-label" for="radio2">관리자</label>
       </div>
     </div>
@@ -148,7 +152,7 @@
 
 
   
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary">사원등록</button>
 </form>
                     
 
@@ -192,6 +196,8 @@
             </div>
         </div>
     </div>
+    
+   
 
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
@@ -202,6 +208,39 @@
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
+    
+    <script>
+    function selectDepartment(departmentCode, element) {
+        var departmentText = '';
+
+        switch (departmentCode) {
+            case 'DV':
+                departmentText = '개발부';
+                break;
+            case 'MN':
+                departmentText = '인사과';
+                break;
+            case 'MK':
+                departmentText = '마케팅';
+                break;
+            default:
+                break;
+        }
+
+        document.getElementById('department').value = departmentCode;
+        document.getElementById('departmentButton').textContent = departmentText;
+    }
+</script>
+
+ <script>
+function selectEmployeeRank(rank) {
+  document.getElementById('employeeRank').value = rank;
+  document.getElementById('employeeRankButton').textContent = rank;
+}
+</script>
+    
+
+
 
 </body>
 
