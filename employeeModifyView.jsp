@@ -67,24 +67,10 @@
           
           <form action="employeeModifyComplete.employeeDo" method="post">
                     
-                <!--      사원코드 : ${eDTOInfo.employeeCode}</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">이름 : ${eDTOInfo.employeeName }
-                                            성별 : ${eDTOInfo.gender }
-                                            이메일 : ${eDTOInfo.email }
-                                            전화번호 : ${eDTOInfo.phonenum }
-                                            주소 : ${eDTOInfo.address }
-                                            관리자권한 : ${eDTOInfo.authority }
-                                            부서 : ${eDTOInfo.department }
-                                            직급 : ${eDTOInfo.employeeRank }
-                                            입사일 : ${eDTOInfo.joinDate }
-                                            사진 : ${eDTOInfo.employeePhoto }  --> 
-         
-      
-
-
+              
 <div class="container mt-3">
   <div class="card" style="width:400px">
-    <img class="card-img-top" src="../bootstrap4/img_avatar1.png" alt="Card image" style="width:100%">
+    <img class="card-img-top" src="img/undraw_profile.svg" alt="Card image" style="width:100%">
     <div class="card-body">
       <h5 class="card-title">
 		
@@ -164,7 +150,6 @@
    <div class="dropdown">
    <input type="hidden" id="department" name="department" value="">
   <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" id="departmentButton">
-    부서를 선택하세요
   </button>
   <ul class="dropdown-menu">
       <li><a class="dropdown-item" onclick="selectDepartment('DV',this)">개발부</a></li>
@@ -173,7 +158,6 @@
   </ul>
   <input type="hidden" id="employeeRank" name="employeeRank" value="">
   <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" id="employeeRankButton">
-    직급을 선택하세요
   </button>
   <ul class="dropdown-menu">
   <li><a class="dropdown-item" onclick="selectEmployeeRank('부장')">부장</a></li>
@@ -279,7 +263,7 @@
     <script src="js/demo/chart-pie-demo.js"></script>
     
     
-    
+    <!-- 
     <script>
     document.addEventListener('DOMContentLoaded', function () {
         // 부서 dropdown 기본값 설정
@@ -291,9 +275,9 @@
         var employeeRankValue = "${eDTOInfo.employeeRank}";
         document.getElementById('employeeRank').value = employeeRankValue;
         document.getElementById('employeeRankButton').innerText = employeeRankValue !== "" ? employeeRankValue : "직급을 선택하세요";
-    });
+    }); 
     
-    </script>
+    </script>-->
       
      <script>
     function selectDepartment(departmentCode, element) {
@@ -324,6 +308,77 @@ function selectEmployeeRank(rank) {
   document.getElementById('employeeRankButton').textContent = rank;
 }
 </script>      
+
+<script>
+// JavaScript로부터 받은 department 값을 가져옵니다.
+var departmentValue = "${eDTOInfo.department}";
+
+// 조건문을 사용하여 department 값에 따라 부서 버튼의 기본 텍스트와 값을 설정합니다.
+var departmentButtonText = "";
+var departmentButtonValue = "";
+switch (departmentValue) {
+    case "MK":
+        departmentButtonText = "마케팅";
+        departmentButtonValue = "MK";
+        break;
+    case "MN":
+        departmentButtonText = "인사과";
+        departmentButtonValue = "MN";
+        break;
+    case "DV":
+        departmentButtonText = "개발부";
+        departmentButtonValue = "DV";
+        break;
+    default:
+        departmentButtonText = "부서를 선택하세요"; // 기본 텍스트
+        departmentButtonValue = ""; // 기본 값
+}
+
+// 버튼의 기본 텍스트와 값을 설정합니다.
+var departmentButton = document.getElementById("departmentButton");
+departmentButton.textContent = departmentButtonText;
+department.value = departmentButtonValue;
+
+// JavaScript로부터 받은 employeeRank 값을 가져옵니다.
+var employeeRankValue = "${eDTOInfo.employeeRank}";
+
+// 조건문을 사용하여 employeeRank 값에 따라 직급 버튼의 기본 텍스트와 값을 설정합니다.
+var employeeRankButtonText = "";
+var employeeRankButtonValue = "";
+switch (employeeRankValue) {
+    case "부장":
+        employeeRankButtonText = "부장";
+        employeeRankButtonValue = "부장";
+        break;
+    case "차장":
+        employeeRankButtonText = "차장";
+        employeeRankButtonValue = "차장";
+        break;
+    case "과장":
+        employeeRankButtonText = "과장";
+        employeeRankButtonValue = "과장";
+        break;
+    case "대리":
+        employeeRankButtonText = "대리";
+        employeeRankButtonValue = "대리";
+        break;
+    case "사원":
+        employeeRankButtonText = "사원";
+        employeeRankButtonValue = "사원";
+        break;
+    default:
+        employeeRankButtonText = "직급을 선택하세요"; // 기본 텍스트
+        employeeRankButtonValue = ""; // 기본 값
+}
+
+// 직급 버튼의 기본 텍스트와 값을 설정합니다.
+var employeeRankButton = document.getElementById("employeeRankButton");
+employeeRankButton.textContent = employeeRankButtonText;
+employeeRank.value = employeeRankButtonValue;
+</script>
+
+
+
 </body>
 
 </html>

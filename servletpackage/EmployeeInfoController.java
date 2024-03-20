@@ -1,9 +1,6 @@
 package servletpackage;
 
 import java.io.IOException;
-import java.sql.Date;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -83,6 +80,13 @@ public class EmployeeInfoController extends HttpServlet {
     	            
     	            eDAO.updateEmployee(employeeCode, employeeName, gender, phoneNum, address, department, employeeRank, joinDate, authority);
     	            RequestDispatcher dispatcher = request.getRequestDispatcher("employeeSearchView.employeeDo");
+					dispatcher.forward(request, response);
+    			}else if(PATH.equals("/employeeDetailView.employeeDo")) {
+    				String employeeCode = request.getParameter("employeeCode");
+    				System.out.println(employeeCode);
+    				EmployeeDAO eDAO = new EmployeeDAO();
+    				request.setAttribute("eDTOInfo",eDAO.selectEmployee(employeeCode));
+    				RequestDispatcher dispatcher = request.getRequestDispatcher("employeeDetailView.jsp");
 					dispatcher.forward(request, response);
     			}
     	
