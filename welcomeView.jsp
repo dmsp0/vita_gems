@@ -143,10 +143,8 @@ img {vertical-align: middle;}
   .prev, .next,.text {font-size: 11px}
 }
 
-
 body {
   background-color: #f1f1f1;
-  padding: 20px;
   font-family: Arial;
 }
 
