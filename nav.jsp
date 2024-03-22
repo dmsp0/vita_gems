@@ -124,7 +124,7 @@
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="charts.html">
+                <a class="nav-link" href="/hrCharts.chartDo">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>인사정보 통계</span></a>
             </li>

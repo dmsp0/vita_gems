@@ -1,11 +1,13 @@
 package work;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import dbconnection.MyDBConnection;
 
@@ -20,6 +22,15 @@ public class WorkDAO {
 	private String searchDetailAttendanceSQL = "select * from totalattendance where employeeCode = ?";
 	// 해당 사원 날짜별 데이터 가져오기
 	private String totalDateofAttendanceSQL = "select date, startTimeForWork, endTimeForWork, status from attendance where employeeCode = ?";
+	// 해당 사원의 근태 상태 수정하기
+	private String updateStatusSQL = "update attendance set status=? where employeeCode=? and date=?";
+	
+	
+	// 근태 상태 수정하기
+	public void updateStatus() {
+		
+	}
+	
 	
 	// 전사원 근태 내역
 	public List<WorkDTO> getAllAttendance(){
@@ -108,6 +119,39 @@ public class WorkDAO {
 			
 			return workAllDateInfo;// 해당 사원의 날짜별 근태정보를 담은 리스트를 반환합니다.
 		}
+		
+		// "update attendance set status=? where employeeCode=? and date=?";
+		public void startUpdateStatus(String employeeCode, Map<Date, String> statusMap ) {
+			con = MyDBConnection.getConnection();
+		    try {
+		        pstmt = con.prepareStatement(updateStatusSQL);
+		        pstmt.setString(2, employeeCode); // employeeCode를 설정합니다.
+		        
+	
+		        // statusMap을 반복하여 PreparedStatement에 값을 설정합니다.
+		        for (Map.Entry<Date, String> entry : statusMap.entrySet()) {
+		            Date date = entry.getKey();
+		            String status = entry.getValue();
+		            
+		            // 날짜와 상태 값을 PreparedStatement에 설정합니다.
+		            pstmt.setString(1, status); // 첫 번째 파라미터에는 상태 값을 설정합니다.
+		            pstmt.setDate(3, date); // 세 번째 파라미터에는 날짜 값을 설정합니다.
+		            
+		            // PreparedStatement를 실행합니다.
+		            pstmt.executeUpdate();
+		            System.out.println(date + status);
+		        }
+		    } catch (SQLException e) {
+		        e.printStackTrace();
+		    } finally {
+		        // 리소스 해제 등 필요한 작업을 수행합니다.
+		        MyDBConnection.close(rs, pstmt, con);
+		    }
+			
+		}
+		
+		
+		
 	
 	/*
 	 * // 해당 사원의 상세 근태 내역 public List<WorkDTO> getDetailAttendance(){ List<WorkDTO>

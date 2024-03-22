@@ -79,7 +79,7 @@ public class EmployeeInfoController extends HttpServlet {
     	            String authority = request.getParameter("authority");
     	            
     	            eDAO.updateEmployee(employeeCode, employeeName, gender, phoneNum, address, department, employeeRank, joinDate, authority);
-    	            RequestDispatcher dispatcher = request.getRequestDispatcher("employeeSearchView.employeeDo");
+    	            RequestDispatcher dispatcher = request.getRequestDispatcher("employeeDetailView.employeeDo?employeeCode="+employeeCode);
 					dispatcher.forward(request, response);
     			}else if(PATH.equals("/employeeDetailView.employeeDo")) {
     				String employeeCode = request.getParameter("employeeCode");

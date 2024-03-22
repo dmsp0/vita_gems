@@ -72,7 +72,7 @@
 								<div class="card-header py-3">
 									<h6 class="m-0 font-weight-bold text-primary">근태 정보</h6>
 								</div>
-								<!-- <div class="card-body"> -->
+								<div class="card-body">
 								<div class="table-responsive">
 									<table class="table table-bordered" id="dataTable" width="100%"
 										cellspacing="0">
@@ -95,12 +95,13 @@
 													<!-- 출근 -->
 													<td>${work1.endTimeForWork}</td>
 													<!-- 퇴근 -->
-													<td>${work1.status}</td>
+													<td>${work1.status == "NULL" ? "" : work1.status}</td>
 													<!-- 상태 -->
 												</tr>
 											</c:forEach>
 										</tbody>
 									</table>
+								</div>
 								</div>
 							</div>
 							<!-- 근태 상태수정으로 넘어가기 -->
@@ -139,7 +140,7 @@
 							<c:forEach var="work" items="${wdDTOlist}">
 								<tr>
 									<!-- 해당 사원의 사원코드를 파라미터 값으로 가지고 넘어가기 -->
-									<td>${work.employeeCode}</td>
+									<td id="${work.employeeCode}">${work.employeeCode}</td>
 									<!-- 사원코드 -->
 									<td>${work.employeeName}</td>
 									<!-- 사원명 -->
@@ -182,7 +183,7 @@
 									<!-- 사원 정보 간략 기술하기 -->
 								</div>
 
-								<a target="_blank" rel="nofollow" href="#">사원정보 보러가기 &rarr;</a>
+								<a href="employeeDetailView.employeeDo?employeeCode=${modifyCode}">사원정보 보러가기 &rarr;</a>
 							</div>
 						</div>
 						<!-- 사원정보로 넘어가기 끝 -->

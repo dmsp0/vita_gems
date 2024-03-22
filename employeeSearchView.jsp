@@ -78,17 +78,7 @@
                                             <th>사원코드</th>
                                         </tr>
                                     </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>이름</th>
-                                            <th>생일</th>
-                                            <th>전화번호</th>
-                                            <th>부서</th>
-                                            <th>직급</th>
-                                            <th>입사일</th>
-                                            <th>사원코드</th>
-                                        </tr>
-                                    </tfoot>
+                                  
                                     <tbody>
            <c:forEach var="employee" items="${eDTOList}">
             <tr>
@@ -98,7 +88,7 @@
                 <td>${employee.department}</td>
                 <td>${employee.employeeRank}</td>
                 <td>${employee.joinDate}</td>
-                <td><a href="employeeModifyView.employeeDo?employeeCode=${employee.employeeCode}">${employee.employeeCode}</a></td>
+                <td><a href="employeeDetailView.employeeDo?employeeCode=${employee.employeeCode}">${employee.employeeCode}</a></td>
                 <!-- 추가적인 사원 정보 표현 -->
             </tr>
         </c:forEach>

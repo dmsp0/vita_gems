@@ -2,6 +2,7 @@ package work;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.util.Map;
 
 public class WorkDTO {
 
@@ -24,7 +25,22 @@ private Time startTimeForWork; // 출근시간
 private Time endTimeForWork; // 퇴근시간
 private String status; // 근태 상태
 
+// 근태 수정을 위한 map
+private Map<Date, String> statusMap;
 
+public Map<Date, String> workdtostatusMap() {
+    return statusMap;
+}
+
+public  void setStatusMap(Map<Date, String> statusMap) {
+    this.statusMap = statusMap;
+}
+
+
+
+public Map<Date, String> getStatusMap() {
+	return statusMap;
+}
 
 public String getEmployeeCode() {
 	return employeeCode;

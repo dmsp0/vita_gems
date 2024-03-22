@@ -29,29 +29,74 @@
 </head>
 
 <script>
-function optionSelected(selectElement) {
-	
-	//var changeStatusArray = 
-	
+
+let changeStatusArray = [];
+
+function optionSelected(selectElement) {	
 	// "nowStatusDate${counter}"
-	var nowStatusDateId = selectElement.parentElement.previousElementSibling.id;
-	var nowStatusDateElement = document.getElementById(nowStatusDateId);
-	var nowStatusDateText = nowStatusDateElement.textContent;
-		
+	var counter = selectElement.id.replace('changeStatus', ''); // 현재 선택된 요소의 counter 추출
+    var nowStatusDateId = "nowStatusDate" + counter; // 해당 counter에 대응하는 날짜 요소 id
+    var nowStatusDateElement = document.getElementById(nowStatusDateId);
+    var nowStatusDateText = nowStatusDateElement.textContent.trim();
+
     var selectedValue = selectElement.value;
     var dot = selectElement.nextElementSibling;
-    
-    var nowStatusId = selectElement.parentElement.previousElementSibling.id;
+
+    var nowStatusId = "nowStatus" + counter; // 해당 counter에 대응하는 현재 상태 요소 id
     var nowStatusElement = document.getElementById(nowStatusId);
     var nowStatusText = nowStatusElement.textContent.trim();
 
-    if (selectedValue !== nowStatusText) {
-        dot.style.color = "red";
+    if (selectedValue !== nowStatusText) { // 수정을 위해 선택된 상태의 값과 현상태의 값이 다른 경우
+        dot.style.color = "red"; // 동그라미를 빨갛게 표시한다.
         
-    }
-    else {
+       
+        
+        // 배열에서 해당 날짜 데이터를 찾아 업데이트하거나 추가한다.
+        let index = changeStatusArray.findIndex(item => item.date === nowStatusDateText);
+        
+        if (index !== -1) {
+            // 이미 존재하는 경우 상태 값을 업데이트한다.
+            changeStatusArray[index].status = selectedValue;
+        }  else {
+            // 존재하지 않는 경우 배열에 추가한다.
+            changeStatusArray.push({ date: nowStatusDateText, status: selectedValue });
+        } 
+    } else {
         dot.style.color = "";
+        
+        // 선택이 다시 현재 상태 값과 같은 경우 배열에서 해당 행의 데이터를 제거한다.
+        changeStatusArray = changeStatusArray.filter(item => item.date !== nowStatusDateText);
     }
+    
+}
+
+function modifyRequestClick() {
+     // 변경된 날짜 데이터와 상태 값을 확인합니다.
+   // console.log(changeStatusArray); 확인 완료
+    
+    // 서버로 전송할 데이터를 준비합니다.
+    var requestChangeStatusData = {
+        employeeCode: "${modifyCode}", // 사원코드 추가
+        statusArray: changeStatusArray // 변경된 근태 상태 배열
+    };
+    
+    // AJAX를 사용하여 서버에 데이터를 전송합니다.
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "workUpdate.workDo", true); // 서버의 URL 주소를 입력합니다.
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                console.log("데이터 전송 성공!");
+                // 서버로부터 응답을 받은 후 수행할 작업을 여기에 작성합니다.
+            } else {
+                console.error("데이터 전송 실패...");
+            }
+        }
+    };
+    console.log(JSON.stringify(requestChangeStatusData));// :확인 완료
+    xhr.send(JSON.stringify(requestChangeStatusData)); 
+    window.location.href="workDetailSearchView.workDo?employeeCode=${modifyCode}";
 }
 </script>
 
@@ -102,7 +147,7 @@ function optionSelected(selectElement) {
 								<div class="card-header py-3">
 									<h6 class="m-0 font-weight-bold text-primary">근태 정보</h6>
 								</div>
-								<!-- <div class="card-body"> -->
+								<div class="card-body">
 								<div class="table-responsive">
 									<table class="table table-bordered" id="dataTable" width="100%"
 										cellspacing="0">
@@ -127,14 +172,14 @@ function optionSelected(selectElement) {
 													<!-- 출근 -->
 													<td>${work1.endTimeForWork}</td>
 													<!-- 퇴근 -->
-													<td id="nowStatus${counter}">${work1.status}</td>
+													<td id="nowStatus${counter}">${work1.status == "NULL" ? "" : work1.status}</td>
 													<!-- 현재 상태 -->
 													<td><select name="changeStatus${counter}"
 														id="changeStatus${counter}"
 														onchange="optionSelected(this)">
 															<optgroup label="상태 수정">
-																
-																<option value=""></option>
+
+																<option value="null"></option>
 																<option value="출근">출근</option>
 																<option value="출장">출장</option>
 																<option value="외근">외근</option>
@@ -151,11 +196,12 @@ function optionSelected(selectElement) {
 										</tbody>
 									</table>
 								</div>
+								</div>
 							</div>
 							<!-- 근태 상태 정보창으로 넘어가기 -->
 							<a
 								class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
-								href="workDetailSearchView.workDo?employeeCode=${modifyCode}">수정
+								onclick="modifyRequestClick()">수정
 								완료</a>
 
 							<!-- 근태 상태 정보창으로 넘어가기 -->
@@ -243,7 +289,7 @@ function optionSelected(selectElement) {
 										<!-- 사원 정보 간략 기술하기 -->
 									</div>
 
-									<a target="_blank" rel="nofollow" href="#">사원정보 보러가기 &rarr;</a>
+									<a href="employeeDetailView.employeeDo?employeeCode=${modifyCode}">사원정보 보러가기 &rarr;</a>
 								</div>
 							</div>
 							<!-- 사원정보로 넘어가기 끝 -->
