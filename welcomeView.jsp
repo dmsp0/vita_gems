@@ -23,6 +23,11 @@
 
 <style>
 
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}
 /* Style the buttons */
 .btn1 {
   color: black;
@@ -43,11 +48,6 @@
   background-color: #666;
 }
 
-/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
-@media screen and (max-height: 450px) {
-  .sidebar {padding-top: 15px;}
-  .sidebar a {font-size: 18px;}
-}
 
 * {box-sizing: border-box}
 body {font-family: Verdana, sans-serif; margin:0}
@@ -387,8 +387,8 @@ h1, h2 {
                 </div>
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
-                    <button class="btn1 btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn1 btn-primary" href="index.jsp">Logout</a>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="index.jsp">Logout</a>
                 </div>
             </div>
         </div>
@@ -469,6 +469,22 @@ for (var i = 0; i < btns.length; i++) {
 }
 </script>	
 
+<!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="js/demo/chart-area-demo.js"></script>
+    <script src="js/demo/chart-pie-demo.js"></script>
 
 </body>
 
