@@ -238,19 +238,19 @@ h1, h2 {
 
   <div class="mySlides fade">
     <div class="numbertext">1 / 3</div>
-    <img src="img/notice.jpg" style="width:100%; height:500px; object-fit: cover;">
+    <img src="img/공지사항1.jpg" style="width:100%; height:500px; object-fit: cover;">
     <div class="text">Caption First</div>
   </div>
   
   <div class="mySlides fade">
     <div class="numbertext">2 / 3</div>
-    <img src="img/bg.jpg" style="width:100%; height:500px; object-fit: cover;">
+    <img src="img/공지사항2.png" style="width:100%; height:500px; object-fit: cover;">
     <div class="text">Caption Two</div>
   </div>
   
   <div class="mySlides fade">
     <div class="numbertext">3 / 3</div>
-    <img src="img/cat.jpg" style="width:100%; height:500px; object-fit: cover;">
+    <img src="img/공지사항3.png" style="width:100%; height:500px; object-fit: cover;">
     <div class="text">Caption Three</div>
   </div>
 
@@ -285,7 +285,7 @@ h1, h2 {
 <div class="row">
   <div class="column nature">
     <div class="content">
-      <img src="img/유연근무제.png" alt="유연근무제" style="width:100%">
+      <img src="img/유연근무제 공지 이미지.jpg" alt="유연근무제" style="width:100%">
       <h4>유연근무제 시범실시</h4>
       <p>3월20일부터 실시되는..</p>
     </div>
@@ -307,14 +307,14 @@ h1, h2 {
   
   <div class="column cars">
     <div class="content">
-      <img src="img/인사이동.png" alt="인사이동" style="width:100%">
+      <img src="img/인사이동 공지 이미지.jpg" alt="인사이동" style="width:100%">
       <h4>인사이동 안내</h4>
       <p>3월19일부터 진행되는..</p>
     </div>
   </div>
   <div class="column cars">
     <div class="content">
-    <img src="img/인사평가.png" alt="인사평가" style="width:100%">
+    <img src="img/인사평가 공지 이미지.jpg" alt="인사평가" style="width:100%">
       <h4>인사평가 실시안내</h4>
       <p>3월25일부터 실시되는..</p>
     </div>
@@ -329,7 +329,7 @@ h1, h2 {
 
   <div class="column people">
     <div class="content">
-      <img src="img/창립기념일.png" alt="창립기념일 이벤트" style="width:100%">
+      <img src="img/창립기념일 이벤트 공지 이미지.jpg" alt="창립기념일 이벤트" style="width:100%">
       <h4>창립기념일 행사안내</h4>
       <p>3월23일에 개최되는..</p>
     </div>

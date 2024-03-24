@@ -108,11 +108,13 @@ h2 {
 	display: flex; /* 수평 정렬을 위해 flexbox 사용 */
 	align-items: center; /* 수직 가운데 정렬 */
 }
+
 .SerchInput {
 	border-radius: 7px;
 	padding-left: 10px;
 	height: 40px;
 }
+
 .Searchbtn {
 	background-color: #036ffc;
 	color: white;
@@ -126,7 +128,6 @@ h2 {
 	background-color: blue;
 	color: white;
 }
-
 
 .navigationbar {
 	background-color: black;
@@ -181,7 +182,7 @@ h2 {
 					<div class="row">
 						<div class="column nature">
 							<div class="content">
-								<img src="" alt="유연근무제" style="width: 100%">
+								<img src="img/유연근무제 공지 이미지.jpg" alt="유연근무제" style="width: 100%">
 								<h4>유연근무제 시범실시</h4>
 								<p>3월20일부터 실시되는..</p>
 							</div>
@@ -203,14 +204,14 @@ h2 {
 
 						<div class="column cars">
 							<div class="content">
-								<img src="" alt="인사이동" style="width: 100%">
+								<img src="img/인사이동 공지 이미지.jpg" alt="인사이동" style="width: 100%">
 								<h4>인사이동 안내</h4>
 								<p>3월19일부터 진행되는..</p>
 							</div>
 						</div>
 						<div class="column cars">
 							<div class="content">
-								<img src="" alt="인사평가" style="width: 100%">
+								<img src="img/인사평가 공지 이미지.jpg" alt="인사평가" style="width: 100%">
 								<h4>인사평가 실시안내</h4>
 								<p>3월25일부터 실시되는..</p>
 							</div>
@@ -225,7 +226,8 @@ h2 {
 
 						<div class="column people">
 							<div class="content">
-								<img src="" alt="창립기념일 이벤트" style="width: 100%">
+								<img src="img/창립기념일 이벤트 공지 이미지.jpg" alt="창립기념일 이벤트"
+									style="width: 100%">
 								<h4>창립기념일 행사안내</h4>
 								<p>3월23일에 개최되는..</p>
 							</div>
