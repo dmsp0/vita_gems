@@ -54,12 +54,12 @@
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
                     <h1 class="h3 mb-0 text-gray-800">게시물 등록</h1>
                 </div>
-
+				<form id="myForm" action="boardWriteView.boardDo" method="post">
                 <div>
                     <table class="table container-sm">
                         <tr>
                             <th>제목</th>
-                            <td><input type="text"></td>
+                            <td><input type="text" name="title"></td>
                         </tr>
                         <tr>
                             <th>카테고리</th>
@@ -86,17 +86,18 @@
                         <tr>
                             <th>작성일시</th>
                             <td id="current-time"></td>
+                            <input type="hidden" id="hiddenCurrentTime" name="hiddenCurrentTime">
                         </tr>
                         <tr>
                             <th>작성자</th>
-                            <td id="employeeName"></td>
+                            <% String authorId = (String)session.getAttribute("user"); %>
+                            <input type="hidden" id="employeeName" name="authorId" value="<%=authorId %>">
                         </tr>
                         <tr>
                         	<td>
-                            	<a
-									class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
-									href="boardView.jsp">등록
-								</a>
+                            	<button type="submit" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+                            	onclick="submitForm()">등록</button>
+								
 
 							<!-- 공지사항 리스트 창으로 넘어가기 -->
 								<a
@@ -108,7 +109,7 @@
                         </tr>
                     </table>
                 </div>
-
+			</form>
             </div>
         </div>
     </div>
@@ -149,5 +150,19 @@
     displayCurrentTime();
 </script>
 
+<script>
+    // 제출 버튼 클릭 시 실행되는 함수
+    function submitForm() {
+        // 현재 시간을 가져오는 함수
+        getCurrentTime();
+
+        // 현재 시간을 hidden input의 value에 설정
+        var hiddenCurrentTimeInput = document.getElementById("hiddenCurrentTime");
+        hiddenCurrentTimeInput.value = getCurrentTime();
+
+        // 폼을 제출
+        document.getElementById("myForm").submit();
+    }
+</script>
 </body>
 </html>

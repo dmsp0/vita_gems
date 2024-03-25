@@ -1,24 +1,62 @@
 package board;
 
+import java.sql.Date;
+
 public class BoardDTO {
-	/*
-	 * TABLE announcement ( 
-	 * noticeid INT NOT NULL AUTO_INCREMENT,
-	 *  title VARCHAR(255)NOT NULL, 
-	 * content TEXT NOT NULL, 
-	 * category ENUM('업무', '인사','이벤트'),
-	 * authorid VARCHAR(20) NOT NULL, 
-	 * publishdate DATETIME NOT NULL, 
-	 * img LONGBLOB,
-	 */
-	private int noticeid;
+	
+	private int noticeId;
 	private String title;
 	private String content;
 	private String category;
-	private String authorid;
-	private String publishdate;
-	//private         img;
+	private String authorId;
+	private Date publishdate;
+	private String img;
+	public int getNoticeId() {
+		return noticeId;
+	}
+	public void setNoticeId(int noticeId) {
+		this.noticeId = noticeId;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
+	}
+	public String getAuthorId() {
+		return authorId;
+	}
+	public void setAuthorId(String authorId) {
+		this.authorId = authorId;
+	}
+	public Date getPublishdate() {
+		return publishdate;
+	}
+	public void setPublishdate(Date publishdate) {
+		this.publishdate = publishdate;
+	}
+	public String getImg() {
+		return img;
+	}
+	public void setImg(String img) {
+		this.img = img;
+	}
 	
+	
+	
+}
 	
 
 /*사진을 담기 위해 LONGBLOB 컬럼을 사용하려는 것이 맞나요? 그렇다면 해당 사진을 바이너리 형식으로 변환하여 데이터베이스에 저장하는 것이 일반적인 방법입니다. Java에서는 이미지를 바이너리 데이터로 변환하여 데이터베이스에 저장할 수 있습니다.
@@ -53,4 +91,4 @@ public class ImageToDatabase {
 
 데이터베이스에서 이미지를 검색하려면 이진 데이터를 다시 이미지로 변환해야 합니다. 이 과정은 이미지 데이터를 읽어서 화면에 표시하는 방식으로 이루어집니다.*/
 	
-}
+

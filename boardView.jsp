@@ -287,9 +287,8 @@ h2 {
 											<tr>
 												<td>${board.noticeId}</td>
 												<td>${board.category}</td>
-												<td><a
-													href="boardDetailView.boardDo?noticeid=${board.noticeId}">${board.title}</a></td>
-												<td>${board.authorid}</td>
+												<td><a href="boardDetailView.boardDo?noticeid=${board.noticeId}">${board.title}</a></td>
+												<td>관리자</td>
 												<td>${board.publishdate}</td>
 											</tr>
 										</c:forEach>

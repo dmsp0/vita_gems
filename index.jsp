@@ -13,11 +13,23 @@
       integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
       crossorigin="anonymous"
     ></script>
+    <script type="text/javascript">
+    // 쿼리 문자열에서 오류 메시지를 가져와서 알림을 표시
+      window.onload = function() {
+        var params = new URLSearchParams(window.location.search);
+        if (params.get('error') === '1') {
+            alert('아이디 혹은 비밀번호가 틀립니다.');
+        }else if(params.get('error')==='2'){
+        	alert('잘못된 접근입니다.');
+        }
+    };
+    
+    </script>
   </head>
   <body>
     <section class="login-form">
       <h1>
-        <img style="width: 300px" src="img/vitagems_logo.png" />
+        <img style="width: 400px" src="img/vitagems_logo.png" />
         <p id="companyName">choongang company</p>
       </h1>
      
