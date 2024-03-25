@@ -82,7 +82,7 @@ h2 {
 /* Create three equal columns that floats next to each other */
 .column {
 	float: left;
-	width: 33.33%;
+	width: 25%;
 	display: none; /* Hide all elements by default */
 }
 
@@ -268,7 +268,6 @@ h2 {
 											<th>제목</th>
 											<th>글쓴이</th>
 											<th>등록일</th>
-											<th>조회수</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -285,12 +284,19 @@ h2 {
 									</tbody>
 								</table>
 							</div>
+							<!-- 등록 버튼 -->
+							<div class="text-right" style="margin-right: 10px;">
+								<button class="btn btn-primary"
+									onclick="location.href='boardWriteView.jsp'">등록</button>
+							</div>
 						</div>
 					</div>
 
 
 				</div>
 				<!-- /.container-fluid -->
+
+
 
 			</div>
 			<!-- End of Main Content -->

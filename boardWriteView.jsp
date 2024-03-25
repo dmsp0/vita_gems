@@ -95,7 +95,7 @@
                         	<td>
                             	<a
 									class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
-									href="boardDetailView.jsp">등록
+									href="boardView.jsp">등록
 								</a>
 
 							<!-- 공지사항 리스트 창으로 넘어가기 -->
