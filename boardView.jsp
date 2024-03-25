@@ -189,16 +189,17 @@ h2 {
 						</div>
 						<div class="column nature">
 							<div class="content">
-								<img src="  " alt="업무공지사항2" style="width: 100%">
-								<h4>업무공지사항2</h4>
-								<p>업무공지사항2..</p>
+								<img src=" img/프로젝트 팀 모집 공지사항 이미지.jpg" alt="프로젝트 팀"
+									style="width: 100%">
+								<h4>신규 프로젝트 팀 모집안내</h4>
+								<p>이번 분기에 예정인..</p>
 							</div>
 						</div>
 						<div class="column nature">
 							<div class="content">
-								<img src="  " alt="업무공지사항3" style="width: 100%">
-								<h4>업무공지사항3</h4>
-								<p>업무공지사항3..</p>
+								<img src="img/재택근무 공지사항 이미지.jpg" alt="재택근무" style="width: 100%">
+								<h4>재택근무 주의사항 및 안내사항</h4>
+								<p>재택근무 시 근태관리는..</p>
 							</div>
 						</div>
 
@@ -218,9 +219,9 @@ h2 {
 						</div>
 						<div class="column cars">
 							<div class="content">
-								<img src="  " alt="인사공지사항3" style="width: 100%">
-								<h4>인사공지사항3</h4>
-								<p>인사공지사항3..</p>
+								<img src="img/인사발령 공지사항 이미지.jpg" alt="인사발령" style="width: 100%">
+								<h4>인사발령안내</h4>
+								<p>전 사원은 본인 해당사항을..</p>
 							</div>
 						</div>
 
@@ -234,16 +235,18 @@ h2 {
 						</div>
 						<div class="column people">
 							<div class="content">
-								<img src="  " alt="이벤트공지사항2" style="width: 100%">
-								<h4>이벤트공지사항2</h4>
-								<p>이벤트공지사항2..</p>
+								<img src="img/복지관련 설문조사 공지사항 이미지.jpg" alt="설문조사"
+									style="width: 100%">
+								<h4>사내 복지관련 설문조사 실시</h4>
+								<p>설문조사에 참가한 분들께는..</p>
 							</div>
 						</div>
 						<div class="column people">
 							<div class="content">
-								<img src="  " alt="이벤트공지사항3" style="width: 100%">
-								<h4>이벤트공지사항3</h4>
-								<p>이벤트공지사항3..</p>
+								<img src="img/홍보이벤트 공지사항 이미지.jpg" alt="회사 홍보 이벤트"
+									style="width: 100%">
+								<h4>회사 홍보 이벤트</h4>
+								<p>본인의 SNS를 이용해서 우리의 회사를 홍보..</p>
 							</div>
 						</div>
 						<!-- END GRID -->
