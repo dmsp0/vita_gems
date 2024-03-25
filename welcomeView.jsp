@@ -354,7 +354,7 @@ h1, h2 {
 <!-- END MAIN -->
 </div>                             
 
-
+<h1>오시는 길</h1>
 <div id="map" style="width: calc(100% - 510px); height: 350px; float: right;"></div>   
                  
                     
