@@ -154,8 +154,9 @@ body {
   margin: auto;
 }
 .main2 {
-  max-width: 1000px;
-  margin: auto;
+  max-width: 500px; /* 변경된 부분: 화면의 반만큼 너비 설정 */
+  float: left; /* 추가된 부분: 왼쪽으로 부유 */
+  margin-right: 10px; /* 추가된 부분: 오른쪽 여백 조정 */
   color: black;
 }
 
@@ -178,7 +179,7 @@ h1, h2 {
 /* Create three equal columns that floats next to each other */
 .column {
   float: left;
-  width: 33.33%;
+  width: 50%;
   display: none; /* Hide all elements by default */
 }
 
@@ -258,7 +259,6 @@ h1, h2 {
 <a class="next" onclick="plusSlides(1)">❯</a>
 
 </div>
-<br>
 
 <div style="text-align:center">
   <span class="dot" onclick="currentSlide(1)"></span> 
@@ -267,11 +267,11 @@ h1, h2 {
 </div>                    
 </div>                  
                     
+<hr>
 
 <!-- MAIN (Center website) -->
 <div class="main2">
 
-<hr>
 <h1>공지사항</h1>
 
 <div id="myBtnContainer">
@@ -353,12 +353,13 @@ h1, h2 {
 
 <!-- END MAIN -->
 </div>                             
-                    
+
+
+<div id="map" style="width: calc(100% - 510px); height: 350px; float: right;"></div>   
+                 
                     
             <!-- End of Main Content -->
 
-            <!-- Footer -->
-            <%@ include file="footer.jsp" %>
             
 
         </div>
@@ -366,6 +367,8 @@ h1, h2 {
 
     </div>
     <!-- End of Page Wrapper -->
+            <!-- Footer -->
+            <%@ include file="footer.jsp" %>
 
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
@@ -466,6 +469,41 @@ for (var i = 0; i < btns.length; i++) {
   });
 }
 </script>	
+
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f5a93e4a11fffc0431877d7b3078ef07"></script>
+<script>
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    mapOption = { 
+        center: new kakao.maps.LatLng(37.4996384, 127.0304606), // 지도의 중심좌표
+        level: 3 // 지도의 확대 레벨
+    };
+
+var map = new kakao.maps.Map(mapContainer, mapOption);
+
+// 마커가 표시될 위치입니다 
+var markerPosition  = new kakao.maps.LatLng(37.4996384, 127.0304606); 
+
+// 마커를 생성합니다
+var marker = new kakao.maps.Marker({
+    position: markerPosition
+});
+
+// 마커가 지도 위에 표시되도록 설정합니다
+marker.setMap(map);
+
+var iwContent = '<div style="padding:5px;">회사 위치<br><a href="https://www.google.co.kr/maps/place/%EC%A4%91%EC%95%99%EC%A0%95%EB%B3%B4%EA%B8%B0%EC%88%A0%EC%9D%B8%EC%9E%AC%EA%B0%9C%EB%B0%9C%EC%9B%90/@37.4996384,127.0304606,15z/data=!4m2!3m1!1s0x0:0x8a8d7c332f9d03aa?sa=X&ved=1t:2428&ictx=111" style="color:black" target="_blank">큰지도보기</a> <a href="https://kko.to/668w6eI50a" style="color:black" target="_blank">길찾기</a></div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+iwPosition = new kakao.maps.LatLng(37.4996384, 127.0304606); //인포윈도우 표시 위치입니다
+
+// 인포윈도우를 생성합니다
+var infowindow = new kakao.maps.InfoWindow({
+    position : iwPosition, 
+    content : iwContent 
+});
+  
+// 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
+infowindow.open(map, marker); 
+</script>
 
 <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
