@@ -21,7 +21,6 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 
-
 <title>VitaGems Notice</title>
 <!-- Custom fonts for this template-->
 <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
@@ -97,6 +96,13 @@ h2 {
 .content {
 	background-color: white;
 	padding: 10px;
+	overflow: hidden;
+}
+
+.content h5 {
+	overflow: hidden; /* 넘치는 부분을 잘라냄 */
+	text-overflow: ellipsis; /* 텍스트가 넘칠 경우 생략 부호(...)로 표시 */
+	white-space: normal; /* 줄바꿈을 가능하게 함 */
 }
 
 /* The "show" class is added to the filtered elements */
@@ -136,6 +142,12 @@ h2 {
 	align-items: center; /* 수직 가운데 정렬 */
 	justify-content: space-between; /* 좌우 여백을 균등하게 배치 */
 	padding: 5px; /* 좌우 여백 추가 */
+}
+
+.content p {
+	overflow: hidden; /* 넘치는 부분을 잘라냄 */
+	text-overflow: ellipsis; /* 텍스트가 넘칠 경우 생략 부호(...)로 표시 */
+	white-space: normal; /* 줄바꿈을 가능하게 함 */
 }
 </style>
 
@@ -183,7 +195,7 @@ h2 {
 						<div class="column nature">
 							<div class="content">
 								<img src="img/유연근무제 공지 이미지.jpg" alt="유연근무제" style="width: 100%">
-								<h4>유연근무제 시범실시</h4>
+								<h5>유연근무제 시범실시</h5>
 								<p>3월20일부터 실시되는..</p>
 							</div>
 						</div>
@@ -191,14 +203,14 @@ h2 {
 							<div class="content">
 								<img src=" img/프로젝트 팀 모집 공지사항 이미지.jpg" alt="프로젝트 팀"
 									style="width: 100%">
-								<h4>신규 프로젝트 팀 모집안내</h4>
+								<h5>신규 프로젝트 팀 모집안내</h5>
 								<p>이번 분기에 예정인..</p>
 							</div>
 						</div>
 						<div class="column nature">
 							<div class="content">
 								<img src="img/재택근무 공지사항 이미지.jpg" alt="재택근무" style="width: 100%">
-								<h4>재택근무 주의사항 및 안내사항</h4>
+								<h5>재택근무 주의사항 및 안내사항</h5>
 								<p>재택근무 시 근태관리는..</p>
 							</div>
 						</div>
@@ -206,21 +218,21 @@ h2 {
 						<div class="column cars">
 							<div class="content">
 								<img src="img/인사이동 공지 이미지.jpg" alt="인사이동" style="width: 100%">
-								<h4>인사이동 안내</h4>
+								<h5>인사이동 안내</h5>
 								<p>3월19일부터 진행되는..</p>
 							</div>
 						</div>
 						<div class="column cars">
 							<div class="content">
 								<img src="img/인사평가 공지 이미지.jpg" alt="인사평가" style="width: 100%">
-								<h4>인사평가 실시안내</h4>
+								<h5>인사평가 실시안내</h5>
 								<p>3월25일부터 실시되는..</p>
 							</div>
 						</div>
 						<div class="column cars">
 							<div class="content">
 								<img src="img/인사발령 공지사항 이미지.jpg" alt="인사발령" style="width: 100%">
-								<h4>인사발령안내</h4>
+								<h5>인사발령안내</h5>
 								<p>전 사원은 본인 해당사항을..</p>
 							</div>
 						</div>
@@ -229,7 +241,7 @@ h2 {
 							<div class="content">
 								<img src="img/창립기념일 이벤트 공지 이미지.jpg" alt="창립기념일 이벤트"
 									style="width: 100%">
-								<h4>창립기념일 행사안내</h4>
+								<h5>창립기념일 행사안내</h5>
 								<p>3월23일에 개최되는..</p>
 							</div>
 						</div>
@@ -237,7 +249,7 @@ h2 {
 							<div class="content">
 								<img src="img/복지관련 설문조사 공지사항 이미지.jpg" alt="설문조사"
 									style="width: 100%">
-								<h4>사내 복지관련 설문조사 실시</h4>
+								<h5>사내 복지관련 설문조사 실시</h5>
 								<p>설문조사에 참가한 분들께는..</p>
 							</div>
 						</div>
@@ -245,7 +257,7 @@ h2 {
 							<div class="content">
 								<img src="img/홍보이벤트 공지사항 이미지.jpg" alt="회사 홍보 이벤트"
 									style="width: 100%">
-								<h4>회사 홍보 이벤트</h4>
+								<h5>회사 홍보 이벤트</h5>
 								<p>본인의 SNS를 이용해서 우리의 회사를 홍보..</p>
 							</div>
 						</div>
