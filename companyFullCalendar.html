@@ -1,0 +1,62 @@
+
+<!-- https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-control-access-aws-waf.html -->
+
+
+<!DOCTYPE html>
+<html lang='ko'>
+<head>
+  <meta charset='utf-8' />
+  <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js'></script>
+  <script src='https://cdn.jsdelivr.net/npm/@fullcalendar/google-calendar@6.1.11/index.global.min.js'></script>
+   <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var calendarEl = document.getElementById('calendar');
+      var popup = document.querySelector('dialog');
+
+      var calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',  
+        googleCalendarApiKey: 'AIzaSyAdh0i7aiWMuzc9HPq0ftQVISK58kMvdFI',
+        events: {
+          googleCalendarId: '9549f8fba00aa1eb6fa5426234d579dc1cf94fded30c9cfbf221eb2a50c3c3c1@group.calendar.google.com'
+        },
+        eventClick: function(info) {
+          info.jsEvent.preventDefault(); // don't let the browser navigate
+          
+          popup.querySelector('div').innerHTML = '<h3>' + info.event.title + '</h3><div>' + info.event.extendedProps.description + '</div>';
+          popup.setAttribute('open', 'open');
+        }
+      });
+
+      calendar.render();
+      popup.querySelector('button').addEventListener('click', function() {
+        popup.removeAttribute('open');
+      });
+    });
+  </script>
+  <style>
+    dialog {
+      position: fixed;
+      margin: 0;
+      width: 300px;
+      z-index: 100;
+      padding: 30px;
+      background: white;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, .5);
+      border: none;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div id='calendar'></div>
+  <dialog>
+    <div>제목 테스트</div>
+    <button>닫기</button>
+  </dialog>
+
+ 
+</body>
+</html>

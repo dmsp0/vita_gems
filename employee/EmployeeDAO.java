@@ -22,7 +22,7 @@ public class EmployeeDAO {
 	private String updateEmployeeSQL = "update hrinformation "
 			+ "set employeeName=?, gender=?, phoneNum=?, address=?, department=?, employeeRank=?, joinDate=?, authority=? "
 			+ "where employeecode = ?";
-	
+	private String updateMyPageSQL = "update hrinformation set email=?, phoneNum=?, address=?, bankAccountNum=? where employeeCode=?";
 	
 	public List<EmployeeDTO> getAllEmployee() {
 		ArrayList<EmployeeDTO> arreDTO = new ArrayList<>();
@@ -125,6 +125,26 @@ public class EmployeeDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
+			MyDBConnection.close(rs, pstmt, con);
+		}
+	}
+	
+	//"update hrinformation set email=?, phoneNum=?, address=?, bankAccountNum=? where employeeCode=?";
+	public void updateMyPage(String employeeCode,String email,String phoneNum,String address,String bankAccountNum) {
+		
+		con=MyDBConnection.getConnection();
+		try {
+			pstmt = con.prepareStatement(updateMyPageSQL);
+			pstmt.setString(1, email);
+			pstmt.setString(2, phoneNum);
+			pstmt.setString(3, address);
+			pstmt.setString(4, bankAccountNum);
+			pstmt.setString(5, employeeCode);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("내 정보 업데이트 중 sql 오류 발생");
+			e.printStackTrace();
+		} finally {
 			MyDBConnection.close(rs, pstmt, con);
 		}
 		

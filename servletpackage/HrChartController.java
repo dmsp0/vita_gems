@@ -21,7 +21,7 @@ public class HrChartController extends HttpServlet {
 	    			
 	    			if(PATH.equals("/hrCharts.chartDo")) {
 	    			
-	    				RequestDispatcher dispatcher = request.getRequestDispatcher("companyHrChart.jsp");
+	    				RequestDispatcher dispatcher = request.getRequestDispatcher("/companyHrChart.jsp");
 	        		    dispatcher.forward(request, response);	
 	    			}
 	 }

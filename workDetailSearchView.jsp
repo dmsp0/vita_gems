@@ -12,7 +12,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>workDetailSearchView</title>
+<title>근태상세조회</title>
 
 <!-- Custom fonts for this template-->
 <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
@@ -51,12 +51,12 @@
 					<!-- Page Heading -->
 					<div
 						class="d-sm-flex align-items-center justify-content-between mb-4">
-						<h1 class="h3 mb-0 text-gray-800">근태상세정보</h1>
-						<a href="#"
+						<h1 class="h3 mb-0 text-gray-800" >${modifyCode} 사원 근태 상세 정보</h1>
+<!-- 						<a href="#"
 							class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
 							<i class="fas fa-download fa-sm text-white-50"></i> Generate
 							Report
-						</a>
+						</a> -->
 					</div>
 
 
@@ -70,7 +70,7 @@
 							<!-- 날짜별 개인 상세 근태 기록 -->
 							<div class="card shadow mb-4">
 								<div class="card-header py-3">
-									<h6 class="m-0 font-weight-bold text-primary">근태 정보</h6>
+									<h6 class="m-0 font-weight-bold text-primary">근태 상세 정보</h6>
 								</div>
 								<div class="card-body">
 								<div class="table-responsive">
@@ -183,7 +183,7 @@
 									<!-- 사원 정보 간략 기술하기 -->
 								</div>
 
-								<a href="employeeDetailView.employeeDo?employeeCode=${modifyCode}">사원정보 보러가기 &rarr;</a>
+								<a style="color:red;" href="employeeDetailView.employeeDo?employeeCode=${modifyCode}">사원정보 보러가기 &rarr;</a>
 							</div>
 						</div>
 						<!-- 사원정보로 넘어가기 끝 -->
@@ -269,27 +269,7 @@
 	</a>
 
 	<!-- Logout Modal-->
-	<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog"
-		aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-					<button class="close" type="button" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">×</span>
-					</button>
-				</div>
-				<div class="modal-body">Select "Logout" below if you are ready
-					to end your current session.</div>
-				<div class="modal-footer">
-					<button class="btn btn-secondary" type="button"
-						data-dismiss="modal">Cancel</button>
-					<a class="btn btn-primary" href="login.html">Logout</a>
-				</div>
-			</div>
-		</div>
-	</div>
+<%@ include file="logoutModal.jsp" %>
 
 	<!-- Bootstrap core JavaScript-->
 	<script src="vendor/jquery/jquery.min.js"></script>

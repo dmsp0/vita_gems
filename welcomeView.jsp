@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="ko">
@@ -12,7 +12,7 @@
     <meta name="author" content="">
 
     <title>VitaGems Home</title>
-	<!-- Custom fonts for this template-->
+   <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
@@ -234,8 +234,8 @@ h1, h2 {
                     </div>
 
 <div id="main1">
-	<div class="slideshow-container">
-<h1>홈 페이지</h1>                    
+   <div class="slideshow-container">
+<h1>Choongang Company</h1>                    
 
   <div class="mySlides fade">
     <div class="numbertext">1 / 3</div>
@@ -376,25 +376,8 @@ h1, h2 {
     </a>
 
     <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="index.jsp">Logout</a>
-                </div>
-            </div>
-        </div>
-    </div>
-	
+    <%@ include file="logoutModal.jsp" %>
+   
 <script>
 let slideIndex = 1;
 showSlides(slideIndex);
@@ -422,8 +405,8 @@ function showSlides(n) {
   slides[slideIndex-1].style.display = "block";  
   dots[slideIndex-1].className += " active1";
 }
-</script>	
-	
+</script>   
+   
 <script>
 filterSelection("all")
 function filterSelection(c) {
@@ -468,7 +451,7 @@ for (var i = 0; i < btns.length; i++) {
     this.className += " active2";
   });
 }
-</script>	
+</script>   
 
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f5a93e4a11fffc0431877d7b3078ef07"></script>

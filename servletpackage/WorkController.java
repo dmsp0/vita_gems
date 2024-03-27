@@ -57,7 +57,6 @@ public class WorkController extends HttpServlet {
 			request.setAttribute("modifyCode", employeeCode); // 수정하기 위해 가져갈 사원코드
 			request.setAttribute("wdDTOlist", wdDTOlist);
 			request.setAttribute("wdtDTOlist", wdtDTOlist);
-			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("workDetailSearchView.jsp");
 			dispatcher.forward(request, response);
 			
