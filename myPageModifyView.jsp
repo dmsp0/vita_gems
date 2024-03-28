@@ -136,8 +136,8 @@
 											style="color: red; font-size: 0.8rem;">
 									</div>
 									<div style="color: gray; font-size: 1.3rem;">
-										<hr style="border-top: 2px solid #325aa8;">
-										<hr style="border-top: 2px solid #325aa8;">
+										<hr style="border-top: 2px solid red;">
+										<hr style="border-top: 2px solid red;">
 										${eDTOInfo.employeeName}
 										<!-- 이름 -->
 										<br> ${eDTOInfo.department} <span
@@ -148,8 +148,10 @@
 
 										<br> 입사일 [ ${eDTOInfo.joinDate} ]
 
-										<hr style="border-top: 2px solid #325aa8;">
-										<hr style="border-top: 2px solid #325aa8;">
+										<hr style="border-top: 2px solid red;">
+										<hr style="border-top: 2px solid red;">
+										
+										<P style="color: red; font-size:1rem;">※ 나의 정보 수정창입니다. 올바른 형식으로 정보를 기입해주세요. ※</P>
 
 									</div>
 									<!-- 왼쪽 정보 -->
@@ -242,11 +244,11 @@
 									</table>
 									<div class="row">
 										<div class="col-md-6">
-											<button type="submit" class="btn btn-primary btn-block">수정완료</button>
+											<button type="submit" class="btn btn-info btn-block">수정완료</button>
 										</div>
 										<div class="col-md-6">
 											<a href="myPage.employeeDo?employeeCode=<%=userCode%>"
-												class="btn btn-primary btn-block">수정취소</a>
+												class="btn btn-info btn-block">수정취소</a>
 										</div>
 									</div>
 								</div>
@@ -287,12 +289,6 @@
 	<!-- Custom scripts for all pages-->
 	<script src="js/sb-admin-2.min.js"></script>
 
-	<!-- Page level plugins -->
-	<script src="vendor/chart.js/Chart.min.js"></script>
-
-	<!-- Page level custom scripts -->
-	<script src="js/demo/chart-area-demo.js"></script>
-	<script src="js/demo/chart-pie-demo.js"></script>
 
 	<script>
 		// JavaScript로부터 eDTOInfo.department 값을 가져옵니다.

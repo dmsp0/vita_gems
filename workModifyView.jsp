@@ -143,61 +143,60 @@ function modifyRequestClick() {
 									<h6 class="m-0 font-weight-bold text-primary">근태 정보</h6>
 								</div>
 								<div class="card-body">
-								<div class="table-responsive">
-									<table class="table table-bordered" id="dataTable" width="100%"
-										cellspacing="0">
-										<thead>
-											<tr>
-												<th>날짜</th>
-												<th>출근시간</th>
-												<th>퇴근시간</th>
-												<th>상태</th>
-												<th>수정</th>
-											</tr>
-										</thead>
-
-										<tbody>
-											<c:set var="counter" value="1" />
-											<c:forEach var="work1" items="${wdtDTOlist}">
+									<div class="table-responsive">
+										<table class="table table-bordered" id="dataTable"
+											width="100%" cellspacing="0">
+											<thead>
 												<tr>
-													<!-- 해당 사원의 사원코드를 파라미터 값으로 가지고 넘어가기 -->
-													<td id="nowStatusDate${counter}">${work1.date}</td>
-													<!-- 날짜 -->
-													<td>${work1.startTimeForWork}</td>
-													<!-- 출근 -->
-													<td>${work1.endTimeForWork}</td>
-													<!-- 퇴근 -->
-													<td id="nowStatus${counter}">${work1.status == "NULL" ? "" : work1.status}</td>
-													<!-- 현재 상태 -->
-													<td><select name="changeStatus${counter}"
-														id="changeStatus${counter}"
-														onchange="optionSelected(this)">
-															<optgroup label="상태 수정">
-
-																<option value="null"></option>
-																<option value="출근">출근</option>
-																<option value="출장">출장</option>
-																<option value="외근">외근</option>
-																<option value="월차">월차</option>
-																<option value="반차">반차</option>
-																<option value="조퇴">조퇴</option>
-																<option value="지각">지각</option>
-																<option value="결근">결근</option>
-															</optgroup>
-													</select> <span class="dot">●</span></td>
+													<th>날짜</th>
+													<th>출근시간</th>
+													<th>퇴근시간</th>
+													<th>상태</th>
+													<th>수정</th>
 												</tr>
-												<c:set var="counter" value="${counter + 1}" />
-											</c:forEach>
-										</tbody>
-									</table>
-								</div>
+											</thead>
+
+											<tbody>
+												<c:set var="counter" value="1" />
+												<c:forEach var="work1" items="${wdtDTOlist}">
+													<tr>
+														<!-- 해당 사원의 사원코드를 파라미터 값으로 가지고 넘어가기 -->
+														<td id="nowStatusDate${counter}">${work1.date}</td>
+														<!-- 날짜 -->
+														<td>${work1.startTimeForWork}</td>
+														<!-- 출근 -->
+														<td>${work1.endTimeForWork}</td>
+														<!-- 퇴근 -->
+														<td id="nowStatus${counter}">${work1.status == "NULL" ? "" : work1.status}</td>
+														<!-- 현재 상태 -->
+														<td><select name="changeStatus${counter}"
+															id="changeStatus${counter}"
+															onchange="optionSelected(this)">
+																<optgroup label="상태 수정">
+
+																	<option value="null"></option>
+																	<option value="출근">출근</option>
+																	<option value="출장">출장</option>
+																	<option value="외근">외근</option>
+																	<option value="월차">월차</option>
+																	<option value="반차">반차</option>
+																	<option value="조퇴">조퇴</option>
+																	<option value="지각">지각</option>
+																	<option value="결근">결근</option>
+																</optgroup>
+														</select> <span class="dot">●</span></td>
+													</tr>
+													<c:set var="counter" value="${counter + 1}" />
+												</c:forEach>
+											</tbody>
+										</table>
+									</div>
 								</div>
 							</div>
 							<!-- 근태 상태 정보창으로 넘어가기 -->
 							<a
 								class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
-								onclick="modifyRequestClick()">수정
-								완료</a>
+								onclick="modifyRequestClick()">수정 완료</a>
 
 							<!-- 근태 상태 정보창으로 넘어가기 -->
 							<a
@@ -284,68 +283,156 @@ function modifyRequestClick() {
 										<!-- 사원 정보 간략 기술하기 -->
 									</div>
 
-									<a href="employeeDetailView.employeeDo?employeeCode=${modifyCode}">사원정보 보러가기 &rarr;</a>
+									<a
+										href="employeeDetailView.employeeDo?employeeCode=${modifyCode}">사원정보
+										보러가기 &rarr;</a>
 								</div>
 							</div>
 							<!-- 사원정보로 넘어가기 끝 -->
 
+							<!-- 근태 기록 방사형 큰 틀 시작 -->
+							<div class="card shadow mb-4">
+								<div class="card-header py-3">
+									<h6 class="m-0 font-weight-bold text-primary">${modifyCode} 연간 근무 통계</h6>
+								</div>
+								<div class="card-body">
+									<!-- Styles 방사형 월간 근태 기록 차트 시작-->
+									<style>
+#chartdiv {
+	width: 100%;
+	height: 500px;
+}
+</style>
 
-							<!-- 원형 그래프 start-->
-							<div class=" mb-4">
-								<div class="card shadow mb-4">
-									<!-- Card Header - Dropdown -->
-									<div
-										class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-										<h6 class="m-0 font-weight-bold text-primary">근태 상태 통계</h6>
-										<div class="dropdown no-arrow">
-											<a class="dropdown-toggle" href="#" role="button"
-												id="dropdownMenuLink" data-toggle="dropdown"
-												aria-haspopup="true" aria-expanded="false"> <i
-												class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-											</a>
-											<div
-												class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-												aria-labelledby="dropdownMenuLink">
-												<div class="dropdown-header">Dropdown Header:</div>
-												<a class="dropdown-item" href="#">Action</a> <a
-													class="dropdown-item" href="#">Another action</a>
-												<div class="dropdown-divider"></div>
-												<a class="dropdown-item" href="#">Something else here</a>
-											</div>
-										</div>
-									</div>
-									<!-- Card Body -->
-									<div class="card-body">
-										<div class="chart-pie pt-4 pb-2">
-											<canvas id="myPieChart"></canvas>
-										</div>
-										<div class="mt-4 text-center small">
-											<span class="mr-2"> <i
-												class="fas fa-circle text-primary"></i> 근무
-											</span> <span class="mr-2"> <i
-												class="fas fa-circle text-success"></i> 휴가
-											</span> <span class="mr-2"> <i
-												class="fas fa-circle text-info"></i> 결근
-											</span>
-										</div>
-									</div>
+									<!-- Resources -->
+									<script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+									<script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
+									<script src="https://cdn.amcharts.com/lib/5/radar.js"></script>
+									<script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+
+									<!-- Chart code -->
+									<script>
+								am5.ready(function() {
+								
+								// Create root element
+								// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+								var root = am5.Root.new("chartdiv");
+								
+								
+								// Set themes
+								// https://www.amcharts.com/docs/v5/concepts/themes/
+								root.setThemes([
+								  am5themes_Animated.new(root)
+								]);
+								
+								
+								// Create chart
+								// https://www.amcharts.com/docs/v5/charts/xy-chart/
+								var chart = root.container.children.push(am5radar.RadarChart.new(root, {
+								  panX: false,
+								  panY: false,
+								  wheelX: "none",
+								  wheelY: "none",
+								  startAngle: -84,
+								  endAngle: 264,
+								  innerRadius: am5.percent(40)
+								}));
+								
+								
+								// Add cursor
+								// https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+								const cursor = chart.set("cursor", am5radar.RadarCursor.new(root, {
+								  behavior: "zoomX"
+								}));
+								cursor.lineY.set("forceHidden", true);
+								
+								
+								// Add scrollbar
+								// https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
+								chart.set("scrollbarX", am5.Scrollbar.new(root, {
+								  orientation: "horizontal",
+								  exportable: false
+								}));
+								
+								// Create axes
+								// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+								var xRenderer = am5radar.AxisRendererCircular.new(root, {
+								  minGridDistance: 30
+								});
+								
+								xRenderer.grid.template.set("forceHidden", true);
+								
+								var xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, {
+								  maxDeviation: 0,
+								  categoryField: "category",
+								  renderer: xRenderer
+								}));
+								
+								var yRenderer = am5radar.AxisRendererRadial.new(root, {});
+								yRenderer.labels.template.set("centerX", am5.p50);
+								
+								var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
+								  maxDeviation: 0.3,
+								  min: 0,
+								  renderer: yRenderer
+								}));
+								
+								// Add series
+								// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+								var series = chart.series.push(am5radar.RadarColumnSeries.new(root, {
+								  name: "Series 1",
+								  sequencedInterpolation: true,
+								  xAxis: xAxis,
+								  yAxis: yAxis,
+								  valueYField: "value",
+								  categoryXField: "category"
+								}));
+								
+								// Rounded corners for columns
+								series.columns.template.setAll({
+								  cornerRadius: 5,
+								  tooltipText: "{categoryX}: {valueY}"
+								});
+								
+								// Make each column to be of a different color
+								series.columns.template.adapters.add("fill", function (fill, target) {
+								  return chart.get("colors").getIndex(series.columns.indexOf(target));
+								});
+								
+								series.columns.template.adapters.add("stroke", function (stroke, target) {
+								  return chart.get("colors").getIndex(series.columns.indexOf(target));
+								});
+								
+								
+								// Set data
+								var data = [];
+								
+								for (var i = 1; i < 13; i++) {
+								  data.push({ category: i, value: Math.round(Math.random() * 100) });
+								}
+								
+								xAxis.data.setAll(data);
+								series.data.setAll(data);
+								
+								
+								// Make stuff animate on load
+								// https://www.amcharts.com/docs/v5/concepts/animations/
+								series.appear(1000);
+								chart.appear(1000, 100);
+								
+								}); // end am5.ready()
+							</script>
+
+									<!-- HTML -->
+									<div id="chartdiv"></div>
+									<!-- 방사형 월간 근태 기록 차트 끝-->
 								</div>
 							</div>
+							<!-- 근태 기록 방사형 큰 틀 끝 -->
 
 						</div>
-						<!-- 원형 그래프 end -->
+
 					</div>
-
-
-
-
-
-
-
-
-
-
-
 
 
 				</div>
@@ -370,7 +457,7 @@ function modifyRequestClick() {
 	</a>
 
 	<!-- Logout Modal-->
-	<%@ include file="logoutModal.jsp" %>
+	<%@ include file="logoutModal.jsp"%>
 
 	<!-- Bootstrap core JavaScript-->
 	<script src="vendor/jquery/jquery.min.js"></script>

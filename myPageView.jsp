@@ -160,7 +160,7 @@
 										</tr>
 
 									</table>
-									<button class="btn btn-primary">수정하기</button>
+									<button class="btn btn-info">수정하기</button>
 								</div>
 							
 							</div>
@@ -199,12 +199,12 @@
 	<!-- Custom scripts for all pages-->
 	<script src="js/sb-admin-2.min.js"></script>
 
-	<!-- Page level plugins -->
+<!-- 	<!-- Page level plugins
 	<script src="vendor/chart.js/Chart.min.js"></script>
 
-	<!-- Page level custom scripts -->
+	Page level custom scripts
 	<script src="js/demo/chart-area-demo.js"></script>
-	<script src="js/demo/chart-pie-demo.js"></script>
+	<script src="js/demo/chart-pie-demo.js"></script> --> 
 
 	<script>
 var authorityValue = "${eDTOInfo.authority}";

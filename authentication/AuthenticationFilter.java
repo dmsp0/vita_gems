@@ -35,7 +35,7 @@ public class AuthenticationFilter extends HttpFilter implements Filter {
            System.out.println(requestURI);
            
            //로그인페이지와 로그인 요청은 거르지 않음
-           if (requestURI.endsWith("/vitagems/") || requestURI.endsWith("loginComplete")||requestURI.endsWith("index.jsp")) {//
+           if (requestURI.endsWith("/vitagems/") || requestURI.endsWith("loginComplete")||requestURI.endsWith("index.jsp")||requestURI.endsWith("style.css")||requestURI.endsWith("vitagems_logo.png")) {//
                chain.doFilter(request, response);
                return;
            }
